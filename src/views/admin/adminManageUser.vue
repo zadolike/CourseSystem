@@ -243,6 +243,9 @@ export default {
           if (this.editForm.sex = '0'){
             this.editForm.sex = '男'
           }
+          else {
+            this.editForm.sex = '女'
+          }
           console.log(this.editForm)
           this.$axios.post('/student' + (this.editForm.id?'/update' : '/save'), this.editForm)
               .then(res => {

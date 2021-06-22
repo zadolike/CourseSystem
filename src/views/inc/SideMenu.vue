@@ -35,14 +35,30 @@
       </el-menu-item>
       </router-link>
     </el-submenu>
-    <router-link to="/index">
-      <el-menu-item index="Index">
-        <template slot="title">
-          <i class="el-icon-s-home"></i>
-          <span slot="title">新闻管理</span>
-        </template>
-      </el-menu-item>
-    </router-link>
+
+    <el-submenu index="2">
+      <template slot="title">
+        <i class="el-icon-s-operation"></i>
+        <span>新闻管理</span>
+      </template>
+      <router-link to="/admin/newsList">
+        <el-menu-item index="2-1">
+          <template slot="title">
+            <i class="el-icon-s-custom"></i>
+            <span slot="title">新闻列表</span>
+          </template>
+        </el-menu-item>
+      </router-link>
+      <router-link to="/admin/newsEdit">
+        <el-menu-item index="2-2">
+          <template slot="title">
+            <i class="el-icon-rank"></i>
+            <span slot="title">新闻添加</span>
+          </template>
+        </el-menu-item>
+      </router-link>
+    </el-submenu>
+
   </el-menu>
 </template>
 <script>

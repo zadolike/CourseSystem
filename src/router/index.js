@@ -6,6 +6,8 @@ import StudentInfo from '../views/studentInfo.vue'
 import adminManageUser from '../views/admin/adminManageUser.vue'
 import Home from '../views/Home.vue'
 import teacherManage from '../views/admin/teacherManage'
+import newsList from '../views/admin/newsList'
+import newsEdit from '../views/admin/newsEdit'
 Vue.use(VueRouter)
 
 const routes = [
@@ -39,6 +41,16 @@ const routes = [
         path: '/admin/teacherManage',
         name: 'teacherManage',
         component: teacherManage
+      },
+      {
+        path: '/admin/newsList',
+        name: 'newsList',
+        component: newsList
+      },
+      {
+        path: '/admin/newsEdit',
+        name: 'newsEdit',
+        component: newsEdit
       },
     ]
   },
