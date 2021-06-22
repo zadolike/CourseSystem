@@ -61,7 +61,7 @@ export default {
       const _this = this
       this.$refs.editForm.validate((valid) => {
         if (valid) {
-          this.$axios.post('/news/edit', this.editForm, {
+          this.$axios.post('/admin/news/edit', this.editForm, {
             headers: {
               "Authorization": localStorage.getItem("token")
             }
@@ -69,7 +69,7 @@ export default {
             _this.$alert('操作成功', '提示', {
               confirmButtonText: '确定',
               callback: action => {
-                _this.$router.push("/newsList")
+                _this.$router.push("/admin/newsList")
               }
             });
           });
