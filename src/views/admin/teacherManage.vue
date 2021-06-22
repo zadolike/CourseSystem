@@ -239,10 +239,6 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-
-          if (this.editForm.sex = '0'){
-            this.editForm.sex = '男'
-          }
           console.log(this.editForm)
           this.$axios.post('/teacher' + (this.editForm.id?'/update' : '/save'), this.editForm)
               .then(res => {
