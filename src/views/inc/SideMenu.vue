@@ -5,14 +5,6 @@
       text-color="#fff"
       active-text-color="#ffd04b"
   >
-    <router-link to="/index">
-      <el-menu-item index="Index">
-        <template slot="title">
-          <i class="el-icon-s-home"></i>
-          <span slot="title">首页</span>
-        </template>
-      </el-menu-item>
-    </router-link>
     <el-submenu index="1">
       <template slot="title">
         <i class="el-icon-s-operation"></i>

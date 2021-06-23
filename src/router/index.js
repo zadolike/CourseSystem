@@ -14,6 +14,7 @@ import TeachernewsDetail from "@/views/news/TeachernewsDetail";
 import TeacherIndex from "@/views/teacher/TeacherIndex";
 import CourseList from "@/views/admin/CourseList";
 import StudentIndex from "@/views/student/StudentIndex";
+import TeacherCourse from "@/views/teacher/TeacherCourse";
 Vue.use(VueRouter)
 
 const routes = [
@@ -99,6 +100,11 @@ const routes = [
         path: '/teacher/info',
         name: 'StudentInfo',
         component: StudentInfo
+      },
+      {
+        path: '/teacher/course',
+        name: 'TeacherCourse',
+        component: TeacherCourse
       },
     ]
   }

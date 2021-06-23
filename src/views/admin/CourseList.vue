@@ -18,7 +18,7 @@
         <el-button type="primary" @click="dialogVisible = true">新增</el-button>
       </el-form-item>
       <el-form-item>
-        <el-popconfirm title="这是确定批量删除吗？" @confirm="delHandle(null)">
+        <el-popconfirm title="确定批量删除吗？" @confirm="delHandle(null)">
           <el-button type="danger" slot="reference" :disabled="delBtlStatu">批量删除</el-button>
         </el-popconfirm>
       </el-form-item>
@@ -69,7 +69,7 @@
           <el-divider direction="vertical"></el-divider>
 
           <template>
-            <el-popconfirm title="这是一段内容确定删除吗？" @confirm="delHandle(scope.row.id)">
+            <el-popconfirm title="确定删除吗？" @confirm="delHandle(scope.row.id)">
               <el-button type="text" slot="reference">删除</el-button>
             </el-popconfirm>
           </template>
@@ -111,7 +111,7 @@
         <el-select v-model="editForm.tno" placeholder="请选择">
           <el-option
               v-for="item in tnoList"
-              :value="item">
+              :value="item" :key="item">
           </el-option>
         </el-select>
         </el-form-item>

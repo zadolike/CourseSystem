@@ -30,7 +30,7 @@ axios.interceptors.response.use(response => {
         if(error.response.data) {
             error.message = error.response.data.msg
         }
-        if (error==null&error.response.status === 400) {
+        if (error==null||error.response.status === 400) {
             error.message = '数据填写错误';
         }
         // 根据请求状态觉得是否登录或者提示其他

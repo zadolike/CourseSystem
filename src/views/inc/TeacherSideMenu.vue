@@ -13,7 +13,7 @@
         </template>
       </el-menu-item>
     </router-link>
-    <router-link to="/teacher/index">
+    <router-link to="/teacher/course">
       <el-menu-item index="2">
         <template slot="title">
           <i class="el-icon-s-home"></i>
