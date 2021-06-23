@@ -23,7 +23,7 @@
 </template>
 <script>
 export default {
-  name: "Index",
+  name: "StudentIndex",
   data() {
     return {
       news: {},

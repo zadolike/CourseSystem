@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import StudentIndex from '../views/student/StudentIndex.vue'
 import Login from '../views/login.vue'
 import StudentInfo from '../views/studentInfo.vue'
 import adminManageUser from '../views/admin/adminManageUser.vue'
@@ -13,6 +12,8 @@ import NewsDetail from '../views/news/NewsDetail'
 import TeacherHome from "@/views/TeacherHome";
 import TeachernewsDetail from "@/views/news/TeachernewsDetail";
 import TeacherIndex from "@/views/teacher/TeacherIndex";
+import CourseList from "@/views/admin/CourseList";
+import StudentIndex from "@/views/student/StudentIndex";
 Vue.use(VueRouter)
 
 const routes = [
@@ -28,11 +29,6 @@ const routes = [
     name: 'Home',
     component: Home,
     children: [
-      {
-        path: '/student/index',
-        name: 'StudentIndex',
-        redirect: {name: 'StudentIndex'}
-      },
       {
         path: '/admin/stuManage',
         name: 'adminManageUser',
@@ -52,6 +48,11 @@ const routes = [
         path: '/admin/newsEdit',
         name: 'newsEdit',
         component: newsEdit
+      },
+      {
+        path: '/admin/courseList',
+        name: 'CourseList',
+        component: CourseList
       },
     ]
   },

@@ -58,7 +58,14 @@
         </el-menu-item>
       </router-link>
     </el-submenu>
-
+    <router-link to="/admin/courseList">
+      <el-menu-item index="3">
+        <template slot="title">
+          <i class="el-icon-s-home"></i>
+          <span slot="title">课程管理</span>
+        </template>
+      </el-menu-item>
+    </router-link>
   </el-menu>
 </template>
 <script>
