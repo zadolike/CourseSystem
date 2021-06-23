@@ -2,7 +2,7 @@
   <div>
     <el-container>
       <el-header>
-        <img class="mlogo" src="http://cdn.max-c.com/image/logo/app/4.0/60.png">
+        <img class="mlogo" src="https://www.gxun.edu.cn/images/gx_03.png">
       </el-header>
       <el-main>
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
@@ -23,7 +23,7 @@
             </el-select>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
+            <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
             <el-button @click="resetForm('ruleForm')">重置</el-button>
           </el-form-item>
         </el-form>
@@ -58,7 +58,8 @@ export default {
           { min: 3, max: 15, message: '长度在 3 到 15 个字符', trigger: 'blur' }
         ],
         password: [
-          { required: true, message: '请输入密码', trigger: 'change' }
+          {required: true, message: '请输入密码', trigger: 'change' },
+          { min: 3, max: 18, message: '长度在 3 到 18 个字符', trigger: 'blur' }
         ]
       }
     };
@@ -77,7 +78,10 @@ export default {
               _this.$router.push("/admin/stuManage")
             }
             else if (this.$store.getters.getUser.role == 'Student'){
-              _this.$router.push("/student/info")
+              _this.$router.push("/student/index")
+            }
+            else if (this.$store.getters.getUser.role == 'Teacher'){
+              _this.$router.push("/teacher/index")
             }
           })
         } else {

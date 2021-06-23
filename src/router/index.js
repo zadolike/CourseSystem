@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Index from '../views/index.vue'
+import StudentIndex from '../views/student/StudentIndex.vue'
 import Login from '../views/login.vue'
 import StudentInfo from '../views/studentInfo.vue'
 import adminManageUser from '../views/admin/adminManageUser.vue'
@@ -8,6 +8,11 @@ import Home from '../views/Home.vue'
 import teacherManage from '../views/admin/teacherManage'
 import newsList from '../views/admin/newsList'
 import newsEdit from '../views/admin/newsEdit'
+import StuHome from '../views/StuHome'
+import NewsDetail from '../views/news/NewsDetail'
+import TeacherHome from "@/views/TeacherHome";
+import TeachernewsDetail from "@/views/news/TeachernewsDetail";
+import TeacherIndex from "@/views/teacher/TeacherIndex";
 Vue.use(VueRouter)
 
 const routes = [
@@ -16,6 +21,7 @@ const routes = [
     name: 'Login',
     component: Login
   },
+
     //管理员模块
   {
     path: '/',
@@ -23,14 +29,9 @@ const routes = [
     component: Home,
     children: [
       {
-        path: '/',
-        name: 'Index',
-        redirect: {name: 'Index'}
-      },
-      {
-        path: '/student/info',
-        name: 'StudentInfo',
-        component: StudentInfo
+        path: '/student/index',
+        name: 'StudentIndex',
+        redirect: {name: 'StudentIndex'}
       },
       {
         path: '/admin/stuManage',
@@ -54,6 +55,52 @@ const routes = [
       },
     ]
   },
+  //学生模块
+  {
+    path: '/',
+    name: 'StuHome',
+    component: StuHome,
+    children: [
+      {
+        path: '/student/index',
+        name: 'StudentIndex',
+        component: StudentIndex
+      },
+      {
+        path: '/student/newsDetail',
+        name: 'NewsDetail',
+        component: NewsDetail
+      },
+      {
+        path: '/student/info',
+        name: 'StudentInfo',
+        component: StudentInfo
+      },
+    ]
+  },
+  //教师模块
+  {
+    path: '/',
+    name: 'TeacherHome',
+    component: TeacherHome,
+    children: [
+      {
+        path: '/teacher/index',
+        name: 'TeacherIndex',
+        component: TeacherIndex
+      },
+      {
+        path: '/teacher/TeachernewsDetail',
+        name: 'TeachernewsDetail',
+        component: TeachernewsDetail
+      },
+      {
+        path: '/teacher/info',
+        name: 'StudentInfo',
+        component: StudentInfo
+      },
+    ]
+  }
 ]
 
 const router = new VueRouter({

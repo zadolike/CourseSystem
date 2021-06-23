@@ -2,7 +2,7 @@
   <el-container>
     <el-aside width="200px">
 
-      <SideMenu></SideMenu>
+      <TeacherSideMenu></TeacherSideMenu>
 
     </el-aside>
     <el-container>
@@ -10,9 +10,6 @@
         <strong>课程信息资料系统</strong>
 
         <div class="header-avatar">
-
-
-
           <el-dropdown>
 						<span class="el-dropdown-link">
 						{{userInfo.role+":"+userInfo.sno}}<i class="el-icon-arrow-down el-icon--right"></i>
@@ -39,11 +36,11 @@
 </template>
 
 <script>
-import SideMenu from "./inc/SideMenu";
+import TeacherSideMenu from "./inc/TeacherSideMenu";
 export default {
-  name: "Home",
+  name: "TeacherHome",
   components: {
-    SideMenu
+    TeacherSideMenu
   },
   data() {
     return {
