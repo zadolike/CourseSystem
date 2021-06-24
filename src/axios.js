@@ -27,14 +27,14 @@ axios.interceptors.response.use(response => {
     },
     error => {
         console.log('err' + error)// for debug
-        if(error.response.data) {
-            error.message = error.response.data.msg
-        }
+
         if (error==null||error.response.status === 400) {
             error.message = '数据填写错误';
         }
         // 根据请求状态觉得是否登录或者提示其他
-
+        if(error.response.data) {
+            error.message = error.response.data.msg
+        }
         if (error.response.status === 401) {
             store.commit('REMOVE_INFO');
             router.push({

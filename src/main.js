@@ -8,7 +8,7 @@ import axios from 'axios'
 import './axios.js' // 请求拦截
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
-
+import './permission.js' // 路由拦截
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
 Vue.use(mavonEditor)

@@ -61,12 +61,15 @@ export default {
       this.userInfo = _this.$store.getters.getUser;
     },
     logout() {
-      this.$axios.get("/logout").then(res => {
-        localStorage.clear()
-        sessionStorage.clear()
-        this.$store.commit("resetState")
-        this.$router.push("/login")
-      })
+      const _this = this
+      this.$axios.get('http://localhost:8081/logout', {
+        headers: {
+          "Authorization": localStorage.getItem("token")
+        }
+      }).then((res) => {
+        _this.$store.commit('REMOVE_INFO')
+        _this.$router.push('/login')
+      });
     }
   }
 }

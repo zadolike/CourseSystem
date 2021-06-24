@@ -35,7 +35,11 @@ export default {
   methods: {
     page(currentPage) {
       const _this = this
-      this.$axios.get('/admin/news?currentPage=' + currentPage).then((res) => {
+      this.$axios.get('/admin/news?currentPage=' + currentPage,{
+        headers: {
+          "Authorization": localStorage.getItem("token")
+        }
+      }).then((res) => {
         _this.news = res.data.data.records
         _this.currentPage = res.data.data.current
         _this.total = res.data.data.total

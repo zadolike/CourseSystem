@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../views/login.vue'
-import StudentInfo from '../views/studentInfo.vue'
 import adminManageUser from '../views/admin/adminManageUser.vue'
 import Home from '../views/Home.vue'
 import teacherManage from '../views/admin/teacherManage'
@@ -16,6 +15,10 @@ import CourseList from "@/views/admin/CourseList";
 import StudentIndex from "@/views/student/StudentIndex";
 import TeacherCourse from "@/views/teacher/TeacherCourse";
 import CourseDetail from "@/views/teacher/CourseDetail";
+import StudentInfo from "@/views/student/StudentInfo";
+import TeacherInfo from "@/views/teacher/TeacherInfo";
+import StuCourseDetail from "@/views/student/StuCourseDetail";
+import StuCourse from "@/views/student/StuCourse";
 Vue.use(VueRouter)
 
 const routes = [
@@ -30,6 +33,9 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
+    meta: {
+      requireAuth: true
+    },
     children: [
       {
         path: '/admin/stuManage',
@@ -44,7 +50,7 @@ const routes = [
       {
         path: '/admin/newsList',
         name: 'newsList',
-        component: newsList
+        component: newsList,
       },
       {
         path: '/admin/newsEdit',
@@ -63,6 +69,9 @@ const routes = [
     path: '/',
     name: 'StuHome',
     component: StuHome,
+    meta: {
+      requireAuth: true
+    },
     children: [
       {
         path: '/student/index',
@@ -79,6 +88,16 @@ const routes = [
         name: 'StudentInfo',
         component: StudentInfo
       },
+      {
+        path: '/student/course',
+        name: 'StuCourse',
+        component: StuCourse
+      },
+      {
+        path: '/student/course/:cno',
+        name: 'StuCourseDetail',
+        component: StuCourseDetail
+      },
     ]
   },
   //教师模块
@@ -86,6 +105,9 @@ const routes = [
     path: '/',
     name: 'TeacherHome',
     component: TeacherHome,
+    meta: {
+      requireAuth: true
+    },
     children: [
       {
         path: '/teacher/index',
@@ -99,8 +121,8 @@ const routes = [
       },
       {
         path: '/teacher/info',
-        name: 'StudentInfo',
-        component: StudentInfo
+        name: 'TeacherInfo',
+        component: TeacherInfo
       },
       {
         path: '/teacher/course',

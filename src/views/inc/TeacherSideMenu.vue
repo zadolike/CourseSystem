@@ -21,6 +21,14 @@
         </template>
       </el-menu-item>
     </router-link>
+    <router-link to="/teacher/info">
+      <el-menu-item index="3">
+        <template slot="title">
+          <i class="el-icon-s-home"></i>
+          <span slot="title">个人中心</span>
+        </template>
+      </el-menu-item>
+    </router-link>
   </el-menu>
 </template>
 <script>
