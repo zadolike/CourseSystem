@@ -3,7 +3,7 @@
     <el-row>
       <el-col :span="8"  v-for="item in cname" :value="item" :key="item.cno">
         <el-card :body-style="{ padding: '0px' }">
-          <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
+          <img src="https://www.gxun.edu.cn/images/gx_03.png" class="image">
           <div style="padding: 14px;">
             <span>{{item.cname}}</span>
             <div class="bottom clearfix">

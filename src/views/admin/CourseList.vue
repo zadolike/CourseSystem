@@ -66,6 +66,8 @@
 
         <template slot-scope="scope">
           <el-button type="text" @click="editHandle(scope.row.id)">编辑</el-button>
+          <el-button type="text" @click="liststudentHandle(scope.row.cno)">查看学生</el-button>
+          <el-button type="text" @click="addStudentHandle(scope.row.cno)">添加学生</el-button>
           <el-divider direction="vertical"></el-divider>
 
           <template>
@@ -92,7 +94,7 @@
 
     <!--新增对话框-->
     <el-dialog
-        title="提示"
+        title="课程"
         :visible.sync="dialogVisible"
         width="600px"
         :before-close="handleClose">
@@ -101,7 +103,7 @@
         <el-form-item label="ID" prop="id" label-width="100px">
           <el-input v-model="editForm.id" autocomplete="off" disabled></el-input>
         </el-form-item>
-        <el-form-item label="课程号" prop="sno" label-width="100px">
+        <el-form-item label="课程号" prop="cno" label-width="100px">
           <el-input v-model="editForm.cno" autocomplete="off" ></el-input>
         </el-form-item>
         <el-form-item label="课程名" prop="sname" label-width="100px">
@@ -123,7 +125,48 @@
       </div>
     </el-dialog>
 
+    <!--查看课程学生对话框-->
+    <el-dialog
+        title="学生列表"
+        :visible.sync="dialogVisible1"
+        width="600px"
+        :before-close="handleClose1">
+      <el-row>
+        <el-col :span="8"  v-for="item in editForm1" :value="item" :key="item.cno">
+          <el-card :body-style="{ padding: '0px' }">
+            <div style="padding: 14px;">
+              <span>{{item.sno}}</span>
+              <span>{{item.sname}}</span>
+            </div>
+          </el-card>
+        </el-col>
+      </el-row>
 
+    </el-dialog>
+    <!--添加学生对话框-->
+    <el-dialog
+        title="添加学生"
+        :visible.sync="dialogVisible2"
+        width="600px"
+        :before-close="handleClose2">
+      <el-form :model="editForm2"  ref="editForm2">
+      <el-form-item label="课程号" prop="cno" label-width="100px">
+        <el-input v-model="editForm2.cno" autocomplete="off" disabled></el-input>
+      </el-form-item>
+      <el-form-item label="学生编号" prop="sno" label-width="100px">
+        <el-select v-model="editForm2.sno" placeholder="请选择">
+          <el-option
+              v-for="item1 in snoList"
+              :value="item1" :key="item1">
+          </el-option>
+        </el-select>
+      </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="resetForm('editForm2')">取 消</el-button>
+        <el-button type="primary" @click="addStudent(editForm2.cno,editForm2.sno)">确 定</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -137,11 +180,24 @@ export default {
       size: 10,
       current: 1,
       dialogVisible: false,
+      dialogVisible1: false,
+      dialogVisible2: false,
       editForm: {
         id:"",
         cno:"",
         cname:"",
         tno:"",
+      },
+      editForm1: {
+        id:"",
+        sno:"",
+        sname:"",
+        sex:"",
+        pwd:""
+      },
+      editForm2: {
+        sno:"",
+        cno:""
       },
       tableData: [],
       editFormRules: {
@@ -150,6 +206,11 @@ export default {
         ],
         tno: [
           {required: true, message: '请绑定教师编号', trigger: 'blur'}
+        ]
+      },
+      editFormRules1: {
+        sno: [
+          {required: true, message: '请绑定学生编号', trigger: 'blur'}
         ]
       },
       multipleSelection: [],
@@ -162,7 +223,8 @@ export default {
       roleTreeData:  [],
       treeCheckedKeys: [],
       checkStrictly: true,
-      tnoList:[]
+      tnoList:[],
+      snoList:[]
     }
   },
   created() {
@@ -206,8 +268,22 @@ export default {
       this.dialogVisible = false
       this.editForm = {}
     },
+    resetForm1(formName) {
+      this.dialogVisible1 = false
+      this.editForm1 = {}
+    },
+    resetForm2(formName) {
+      this.dialogVisible2 = false
+      this.editForm2 = {}
+    },
     handleClose() {
       this.resetForm('editForm')
+    },
+    handleClose1() {
+      this.resetForm1('editForm1')
+    },
+    handleClose2() {
+      this.resetForm2('editForm2')
     },
     getCourseList() {
       this.$axios.get("/course/list/", {
@@ -273,6 +349,26 @@ export default {
         });
       })
     },
+    liststudentHandle(cno){
+      this.$axios.get("/course/listStudent?="+cno).then(res => {
+        this.editForm1 = res.data.data
+        this.dialogVisible1 = true
+      })
+    },
+    addStudentHandle(cno){
+      this.$axios.get("/student/getsno").then(res => {
+        this.snoList = res.data.data
+        console.log(this.snoList)
+        this.editForm2.cno = cno
+        this.dialogVisible2 = true
+      })
+    },
+    addStudent(cno,sno){
+      this.$axios.post("/scourse/addStudent",this.editForm2).then(res => {
+        console.log(res.data.data)
+        this.dialogVisible2 = false
+      })
+    }
   }
 }
 </script>
