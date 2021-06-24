@@ -1,55 +1,38 @@
 <template>
-<div>
-  <el-upload class="upload-demo"
-             :action="uploadUrl"
-             :before-upload="handleBeforeUpload"
-             :on-error="handleUploadError"
-             :before-remove="beforeRemove"
-             multiple
-             :limit="5"
-             :on-exceed="handleExceed"
-             :file-list="fileList">
-    <el-button size="small" type="primary">点击上传</el-button>
-  </el-upload>
+  <div>
 
-<!--  下载-->
-  <el-table
-      ref="multipleTable"
-      :data="tableData"
-      tooltip-effect="dark"
-      style="width: 100%"
-      border
-      stripe
-      >
-    <el-table-column
-        prop="filename"
-        label="文件名">
-    </el-table-column>
-    <el-table-column
-        prop="icon"
-        width="260px"
-        label="操作">
+    <!--  下载-->
+    <el-table
+        ref="multipleTable"
+        :data="tableData"
+        tooltip-effect="dark"
+        style="width: 100%"
+        border
+        stripe
+    >
+      <el-table-column
+          prop="filename"
+          label="文件名">
+      </el-table-column>
+      <el-table-column
+          prop="icon"
+          width="260px"
+          label="操作">
 
-      <template slot-scope="scope">
-<!--        <el-button  type="button" @click="download(scope.row.filename)">  下载附件</el-button>-->
-        <a :href="'http://localhost:8081/teacher/file/download?fileName='+scope.row.filename">下载附件</a>
-        <el-divider direction="vertical"></el-divider>
+        <template slot-scope="scope">
+          <!--        <el-button  type="button" @click="download(scope.row.filename)">  下载附件</el-button>-->
+          <a :href="'http://localhost:8081/teacher/file/download?fileName='+scope.row.filename">下载附件</a>
+          <el-divider direction="vertical"></el-divider>
 
-<!--        <template>-->
-<!--          <el-popconfirm title="确定删除吗？" @confirm="delHandle(scope.row.id)">-->
-<!--            <el-button type="text" slot="reference">删除</el-button>-->
-<!--          </el-popconfirm>-->
-<!--        </template>-->
-
-      </template>
-    </el-table-column>
-  </el-table>
-</div>
+        </template>
+      </el-table-column>
+    </el-table>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "CourseDeatil",
+  name: "StuCourseDetail",
   data () {
     return {
       uploadUrl: 'http://localhost:8081/teacher/file/upload',
@@ -108,7 +91,7 @@ export default {
       }).then((res) => {
         console.log(res.data.data.records)
         this.tableData = res.data.data.records
-    })
+      })
     },
     //文件下载
     download(fileName){

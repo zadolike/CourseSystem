@@ -16,7 +16,7 @@
     <router-link to="/teacher/course">
       <el-menu-item index="2">
         <template slot="title">
-          <i class="el-icon-s-home"></i>
+          <i class="el-icon-reading"></i>
           <span slot="title">课程信息</span>
         </template>
       </el-menu-item>
@@ -24,7 +24,7 @@
     <router-link to="/teacher/info">
       <el-menu-item index="3">
         <template slot="title">
-          <i class="el-icon-s-home"></i>
+          <i class="el-icon-s-custom"></i>
           <span slot="title">个人中心</span>
         </template>
       </el-menu-item>
