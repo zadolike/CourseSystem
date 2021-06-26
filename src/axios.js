@@ -27,7 +27,6 @@ axios.interceptors.response.use(response => {
     },
     error => {
         console.log('err' + error)// for debug
-
         if (error==null||error.response.status === 400) {
             error.message = '数据填写错误';
         }

@@ -59,6 +59,8 @@
 
 
 <script>
+import router from "@/router";
+
 export default {
   name: "StudentInfo",
   data(){
@@ -118,6 +120,7 @@ export default {
       })
     },
     submitForm(formName) {
+      const _this = this
       this.$refs[formName].validate((valid) => {
         if (valid) {
           console.log(this.editForm)
@@ -129,6 +132,8 @@ export default {
                   type: 'success',
                   onClose:() => {
                     this.getInfo(this.dataForm.id)
+                    _this.$store.commit('REMOVE_INFO')
+                    _this.$router.push('/login')
                   }
                 });
                 this.dialogVisible = false

@@ -350,7 +350,7 @@ export default {
       })
     },
     liststudentHandle(cno){
-      this.$axios.get("/course/listStudent?="+cno).then(res => {
+      this.$axios.get("/course/listStudent?cno="+cno).then(res => {
         this.editForm1 = res.data.data
         this.dialogVisible1 = true
       })
